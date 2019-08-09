@@ -218,7 +218,7 @@ $('#hitung').click(function(){
         hasil.perTriwulan = (hasil.perTahun * 27) / 100;
         hasil.perBulan = (hasil.perTahun * 10) / 100;
     } catch(err) {
-        error(err.message)
+        alert(err.message)
     }
     $("#tahun").text(`Rp ${toRupiah(hasil.perTahun)}.00`)
     $("#semester").text(`Rp ${toRupiah(hasil.perSemester)}.00`)
