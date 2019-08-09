@@ -188,16 +188,11 @@ const getRate = (lama, umur) => {
 }
 
 const toRupiah = bilangan => {
-    var	number_string = bilangan.toString(),
-        sisa 	= number_string.length % 3,
-        rupiah 	= number_string.substr(0, sisa),
-        ribuan 	= number_string.substr(sisa).match(/\d{3}/g);
-            
-    if (ribuan) {
-        separator = sisa ? ',' : '';
-        rupiah += separator + ribuan.join(',');
-    }
-    return rupiah
+    var angka = Math.round(bilangan)
+    var rupiah = '';
+    var angkarev = angka.toString().split('').reverse().join('');
+    for (var i = 0; i < angkarev.length; i++) if(i%3==0) rupiah += angkarev.substr(i,3)+',';
+    return rupiah.split('',rupiah.length-1).reverse().join('');
 }
 
 $('#hitung').click(function(){
@@ -217,12 +212,18 @@ $('#hitung').click(function(){
         hasil.perSemester = (hasil.perTahun * 52) / 100;
         hasil.perTriwulan = (hasil.perTahun * 27) / 100;
         hasil.perBulan = (hasil.perTahun * 10) / 100;
+        if(hasil.perBulan < 1){
+          $("#tahun").text(`Rp ${hasil.perTahun}`)
+          $("#semester").text(`Rp ${hasil.perSemester}`)
+          $("#triwulan").text(`Rp ${hasil.perTriwulan}`)
+          $("#bulan").text(`Rp ${hasil.perBulan}`)
+        } else {
+          $("#tahun").text(`Rp ${toRupiah(hasil.perTahun)}`)
+          $("#semester").text(`Rp ${toRupiah(hasil.perSemester)}`)
+          $("#triwulan").text(`Rp ${toRupiah(hasil.perTriwulan)}`)
+          $("#bulan").text(`Rp ${toRupiah(hasil.perBulan)}`)
+        }
     } catch(err) {
         alert(err.message)
     }
-    $("#tahun").text(`Rp ${toRupiah(hasil.perTahun)}.00`)
-    $("#semester").text(`Rp ${toRupiah(hasil.perSemester)}.00`)
-    $("#triwulan").text(`Rp ${toRupiah(hasil.perTriwulan)}.00`)
-    $("#bulan").text(`Rp ${toRupiah(hasil.perBulan)}.00`)
-    
 });
