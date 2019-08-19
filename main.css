@@ -1,0 +1,22 @@
+.custom-image {
+  width: 150px;
+}
+
+@media (max-width: 550px) {
+  .custom-image {
+    order: 1;
+    margin: auto;
+  }
+}
+
+@media (max-width: 550px) {
+  .custom-flex {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 550px) {
+  .text-center {
+    order: 2;
+  }
+}
