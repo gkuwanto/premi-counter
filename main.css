@@ -15,8 +15,18 @@
   }
 }
 
+@media (min-width: 550px) {
+  .custom-title {
+    display: flex;
+    flex-direction: row;
+  }
+  .custom-title h1 {
+    margin-right: 12px;
+  }
+}
+
 @media (max-width: 550px) {
-  .text-center {
+  .custom-title {
     order: 2;
   }
 }

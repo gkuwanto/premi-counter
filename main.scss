@@ -11,8 +11,16 @@
     }
 }
 
-.text-center {
+.custom-title {
+    @media (min-width: 550px) {
+        display: flex;
+        flex-direction: row;
+        h1 {
+            margin-right: 12px;
+        }
+    }
     @media (max-width: 550px) {
         order:2;
     }
+
 }
