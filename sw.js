@@ -1,11 +1,11 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/',
-  '/main.min.css',
-  '/index.js',
-  '/bootstrap.min.css',
-  '/bootstrap.min.js',
-  '/jquery-3.3.1.slim.min.js',
+  '',
+  'main.min.css',
+  'index.js',
+  'bootstrap.min.css',
+  'bootstrap.min.js',
+  'jquery-3.3.1.slim.min.js',
 ];
 
 self.addEventListener('install', function(event) {
